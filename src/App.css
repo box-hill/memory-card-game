@@ -1,11 +1,47 @@
 * {
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
+  margin: 0px;
+}
+#container {
   margin: 0;
-  background-color: rgb(36, 36, 36);
+  background-color: rgb(63, 63, 63);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+header, footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+#cards-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#cards-list li {
+  background-color: white;
+  font-size: 50px;
+  padding: 50px 40px;
+  margin: 30px 20px;
+  box-shadow: 0 4px 8px 0 rgb(27, 27, 27), 0 6px 20px 0 rgba(10, 10, 10, 0.911);
+}
+
+#cards-list div:hover li{
+  background-color: rgb(216, 216, 216);
+  font-size: 55px;
+  padding: 55px 44px;
+  margin: 20px 11px;
 }
