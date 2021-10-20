@@ -3,9 +3,9 @@ import './App.css';
 
 const App = () => {
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [cards, setCards] = useState(['あ',　'い',　'う',　'え',　'お',　'か',　'き', 'く', 'け', 'こ']);
   const [picked, setPicked] = useState(undefined);
-  const [displayedCards, setDisplayedCards] = useState(undefined);
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -18,20 +18,24 @@ const App = () => {
 
   const selectItem = (e) => {
       const chosen = e.target.innerHTML;
-      const key = e.target.getAttribute('data-key');
       if(picked === undefined) {
+        // Player starts a new game and selects any option
         console.log('picked is undef');
         setPicked(chosen);
+        if( bestScore < score + 1 ) {setBestScore(score + 1)};
+        setScore(score + 1);   
       } else if (picked.includes(chosen)) {
-        console.log('has been picked');
+        // Player selects wrong option
+        setScore(0);
+        setPicked(undefined);
       } else {
+        // Player selects correct option
         setPicked(picked.concat(chosen));
+        if( bestScore < score + 1 ) {setBestScore(score + 1)};
         setScore(score + 1);
       }
-      console.log('clicked: ' + chosen + ' | Picked: ' + picked)
-      console.log('-----------');
   }; 
-
+  
   useEffect(() => {    
     let arrayCopy = [...cards];
     shuffleArray(arrayCopy);
@@ -45,12 +49,17 @@ const App = () => {
       cardSelector.forEach((card) => card.removeEventListener('click', selectItem));      
     };
 
-  }, [picked]);
+  }, [picked, score]);
 
 
   return (
     <div id='container'>
-      <header>Memory Card Game</header>
+      <header>
+        <div id='game-name'>Memory Card Game</div>
+        <div>Score: {score}</div>       
+        <div>Best Score: {bestScore}</div>
+      </header>
+      
       {returnList(cards)}
       <footer>Made by Aaron L.</footer>
     </div>
