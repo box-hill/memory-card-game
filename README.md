@@ -7,6 +7,7 @@ This project makes use of Hooks and lifecycle features.
 When the component (cards) are mounted:  
  * Event listeners (click) are added to each card.
  * Card order is randomised.  
+ 
 When cards are updated (from player selecting a card):  
  * Before cards are unmounted, event listeners are removed from each card (to prevent duplicate event listeners).
  * Card order is randomised again.
