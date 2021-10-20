@@ -39,9 +39,8 @@ header, footer {
   box-shadow: 0 4px 8px 0 rgb(27, 27, 27), 0 6px 20px 0 rgba(10, 10, 10, 0.911);
 }
 
-#cards-list div:hover li{
+#cards-list div:hover li {
   background-color: rgb(216, 216, 216);
-  font-size: 55px;
   padding: 55px 44px;
-  margin: 20px 11px;
+  margin: 25px 16px;
 }
